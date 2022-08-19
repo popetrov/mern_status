@@ -8,11 +8,26 @@ import { Status as StatusView } from '../Status/Status'
 import {AuthContext} from "../../context/AuthContext"
 
 import "./StatusesDashboard.css"
+import { useCallback } from 'react'
 
 
 export const StatusesDashboard = () => {
-    const[statuses, setStatuses] = useState(INITIAL_STATUSES)
+    const[statuses, setStatuses] = useState([])
     const {userId} = useContext(AuthContext)
+
+    const getStatuses = useCallback(async () => {
+        try {
+            await axios.get('api/status', { 
+                headers: {
+                    'Content-Type:': 'application/json'
+                },
+                params: { userId }
+                .then((response) => setStatuses(response.data))
+            })
+        } catch(e) {
+            console.log(e)
+        }
+    }, [userId])
     
     const deleteStatusHandler = (id) => {
             setStatuses(prev => prev.filter(status => status.id !== id))
@@ -30,7 +45,7 @@ export const StatusesDashboard = () => {
                 await axios.post('/api/status/add', {data, userId}, {
                     headers: {"Content-Type": "application/json"}
             })
-            .then((prev) => setStatuses(...prev, data), console.log(statuses))
+            .then((response) => [...statuses, response.data])
             }catch(e){
                 console.log(e)
             }
@@ -40,8 +55,8 @@ export const StatusesDashboard = () => {
 
     return (
         <div className='StatusesDashboard'>
-            {statuses.map(status => (
-                <StatusView key={status.id} status={status} onDelete={deleteStatusHandler}/>
+            {statuses.map((status, index) => (
+                <StatusView key={index} status={status.data} onDelete={deleteStatusHandler}/>
             ))}
             <StatusesDashboardForm onSubmit={formSubmitHandle}/>
         </div>

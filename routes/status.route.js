@@ -19,4 +19,16 @@ router.post('/add', async (req, res) => {
 	}
 });
 
+router.get('/', async (req, res) => {
+	try {
+		const { userId } = req.query;
+
+		const status = await Status.find({ owner: userId });
+
+		res.json(status);
+	} catch (e) {
+		console.log(e);
+	}
+});
+
 module.exports = router;
