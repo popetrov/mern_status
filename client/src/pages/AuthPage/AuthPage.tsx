@@ -7,7 +7,6 @@ export const AuthPage = () => {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<Register/>}/>
                 <Route path="/login" element={<Login/>}/>
                 <Route path="/register" element={<Register/>}/>
             </Routes>
