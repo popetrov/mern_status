@@ -6,4 +6,4 @@ const schema = new Schema({
 	data: [{ type: Types.ObjectId, ref: 'Data' }],
 });
 
-module.export = model('User', schema);
+module.exports = model('User', schema);
