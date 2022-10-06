@@ -6,5 +6,7 @@
 		"MEERCAT",
 		"popetrov",
 		"Xmark"
-	]
+	],
+	"javascript.suggestionActions.enabled": false,
+	"typescript.suggestionActions.enabled": false
 }

@@ -6,10 +6,10 @@ import { AuthPage } from './pages/AuthPage/AuthPage';
 
 function App() {
   return (
-    <div>
-      <Navbar/>
-      <AuthPage/>
-    </div>
+      <div>
+        <Navbar/>
+        <AuthPage/>
+      </div>
   );
 }
 
