@@ -1,0 +1,55 @@
+.container {
+    margin-top: 50px;
+    width: 500px;
+    height: auto;
+    box-shadow: 0 10px 15px#2b462c ;
+}
+
+.text {
+    padding-top: 20px;
+    text-align: center;
+    color: white
+}
+
+.row {
+    width: 300px;
+    margin: auto;
+    margin-top: 30px;
+    padding-bottom: 20px;
+}
+
+.password {
+    color: #81c784
+}
+
+.validate {
+    color: #81c784
+} 
+
+
+::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #81c784
+ }
+ :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    #81c784
+ }
+ ::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    #81c784
+ }
+ :-ms-input-placeholder { /* Internet Explorer 10+ */
+    color:    #81c784
+ }
+
+.btn-reg {
+    margin-left: 100px;
+    color: lightgreen;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.btn-login {
+    margin-left: 10px;
+    color: lightgreen;
+    font-weight: 500;
+    font-size: 15px;
+}
