@@ -6,12 +6,12 @@ import './App.css';
 import 'materialize-css/dist/css/materialize.min.css'
 
 function App() {
-  const routes = UseRoutes()
+  const route = UseRoutes()
   return (
       <div>
         <BrowserRouter>
           <Navbar/>
-          {routes}
+          {route}
         </BrowserRouter>
       </div>
   );
