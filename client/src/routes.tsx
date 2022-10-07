@@ -2,7 +2,7 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import { AuthPage } from './pages/AuthPage/AuthPage';
 import { MainPage } from './pages/MainPage/MainPage';
 
-export const UseRoutes = (isLogin) => {
+export const UseRoutes = (isLogin:boolean) => {
 	if (isLogin) {
 		return (
 			<Routes>
@@ -15,7 +15,7 @@ export const UseRoutes = (isLogin) => {
 	return (
 		<Routes>
 			<Route path='/login' element={<AuthPage />} />
-			<Route path='*' element={<Navigate to='/' replace />} />
+			{/* <Route path='*' element={<Navigate to='/login' replace />} /> */}
 		</Routes>
 	);
 };
