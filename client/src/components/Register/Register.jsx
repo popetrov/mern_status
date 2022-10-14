@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import axios from "axios"
 import './Register.css'
-import { response } from 'express'
+
 
 export const Register = () => {
     const [form, setForm] = useState({
@@ -10,7 +10,7 @@ export const Register = () => {
         password:''
     })
 
-    const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const changeHandler = (e) => {
         setForm({...form, [e.target.name]:e.target.value})
         console.log(form)
     }

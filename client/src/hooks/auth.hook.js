@@ -1,11 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 export const useAuth = () => {
 	const [token, setToken] = useState(null);
 	const [userId, setUserId] = useState(null);
 	const [isReady, setIsReady] = useState(false);
 
-	const login = (jwtToken, id) => {
+	const login = useCallback((jwtToken, id) => {
 		setToken(jwtToken);
 		setUserId(id);
 		localStorage.setItem(
@@ -15,7 +15,7 @@ export const useAuth = () => {
 				token: jwtToken,
 			})
 		);
-	};
+	}, []);
 
 	const logout = () => {
 		setToken(null);
@@ -29,5 +29,7 @@ export const useAuth = () => {
 			login(data.token, data.userId);
 		}
 		setIsReady(true);
-	}, []);
+	}, [login]);
+
+	return { login, logout, token, userId, isReady };
 };
