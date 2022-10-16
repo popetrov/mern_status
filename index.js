@@ -4,10 +4,7 @@ const mongoose = require('mongoose');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.use(express.json({ extended: true }));
-app.use('/api/auth', require('./routes/auth.route'));
-
-const start = async () => {
+async function start() {
 	try {
 		await mongoose.connect(
 			'mongodb+srv://popetrov:Qw210290@cluster0.epn64.mongodb.net/todo?retryWrites=true&w=majority'
@@ -19,6 +16,6 @@ const start = async () => {
 	} catch (e) {
 		console.log(e);
 	}
-};
+}
 
 start();
