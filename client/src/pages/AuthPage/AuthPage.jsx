@@ -1,14 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 import axios from 'axios'
 
 import "./AuthPage.css"
+import { AuthContext } from '../../context/AuthContext';
 
 export const AuthPage = () => {
     const [form, setForm] = useState({
         email:"",
         password:""
     })
+
+    const {login} = useContext(AuthContext)
 
     const changeHandler = (e) => {
         setForm({...form, [e.target.name]: e.target.value})
@@ -22,6 +25,21 @@ export const AuthPage = () => {
                 }
             })
             .then(response => console.log(response))
+        }catch(e){
+            console.log(e)
+        }
+    }
+
+    const loginHandler = async () => {
+        try{
+           await axios.post('/api/auth/login', {...form},{
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => {
+                login(response.data.token, response.data.userId)
+            })
         }catch(e){
             console.log(e)
         }
@@ -59,7 +77,10 @@ export const AuthPage = () => {
                                         </div>
                                     </div>
                                     <div className="row">
-                                        <button className="waves-effect waves-light btn green darken-4">
+                                        <button 
+                                            className="waves-effect waves-light btn green darken-4"
+                                            onClick={loginHandler}
+                                        >
                                             Войти
                                         </button>
                                         <Link to="/registration" className="btn-outline btn-reg">
