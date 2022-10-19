@@ -11,7 +11,7 @@ export const MainPage = () => {
 
     const getData = useCallback(async () => {
         try{
-            await axios.get('/api/data', {
+            await axios.get('https://popetrov-mern.herokuapp.com/api/data', {
                 headers: {
                     'Content-Type': 'application/json'
                 },
@@ -26,7 +26,7 @@ export const MainPage = () => {
     const createData = useCallback(async () => {
         if(!text) return null
         try{
-            await axios.post('/api/data/add', {text, userId}, {
+            await axios.post('https://popetrov-mern.herokuapp.com/api/data/add', {text, userId}, {
                 headers: {
                     'Content-Type': 'application/json'
                 }
@@ -43,9 +43,14 @@ export const MainPage = () => {
 
     const removeData = useCallback( async (id) => {
         try{
-            await axios.delete(`/api/data/delete/${id}`, {id}, {
+            await axios.delete(`https://popetrov-mern.herokuapp.com/api/data/delete/${id}`, {id}, {
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    "Accept": "application/json",
+                    "Access-Control-Allow-Origin": "*",
+                    "X-Requested-With": "XMLHttpRequest",
+                    "Access-Control-Allow-Methods" : "GET,POST,PUT,DELETE,OPTIONS",
+                    "Access-Control-Allow-Headers": "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With"
                 }
             })
             .then(() => getData())
