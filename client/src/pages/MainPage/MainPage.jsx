@@ -13,7 +13,12 @@ export const MainPage = () => {
         try{
             await axios.get('https://popetrov-mern.herokuapp.com/api/data', {
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    "Accept": "application/json",
+                    "Access-Control-Allow-Origin": "*",
+                    "X-Requested-With": "XMLHttpRequest",
+                    "Access-Control-Allow-Methods" : "GET,POST,PUT,DELETE,OPTIONS",
+                    "Access-Control-Allow-Headers": "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With"
                 },
                 params: {userId}
             })
