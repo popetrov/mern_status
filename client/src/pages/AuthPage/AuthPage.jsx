@@ -25,7 +25,7 @@ export const AuthPage = () => {
                 headers: {
                     'Content-Type': 'application/json',
                     "Accept": "application/json",
-                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Origin": "https://popetrov-mern.herokuapp.com",
                     "X-Requested-With": "XMLHttpRequest",
                     "Access-Control-Allow-Methods" : "GET,POST,PUT,DELETE,OPTIONS",
                     "Access-Control-Allow-Headers": "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With"
@@ -42,7 +42,12 @@ export const AuthPage = () => {
         try{
            await axios.post('https://popetrov-mern.herokuapp.com/api/auth/login', {...form},{
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    "Accept": "application/json",
+                    "Access-Control-Allow-Origin": "https://popetrov-mern.herokuapp.com",
+                    "X-Requested-With": "XMLHttpRequest",
+                    "Access-Control-Allow-Methods" : "GET,POST,PUT,DELETE,OPTIONS",
+                    "Access-Control-Allow-Headers": "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With"
                 }
             })
             .then(response => {
@@ -59,7 +64,7 @@ export const AuthPage = () => {
                     <div className="container">
                         <div className="auth-page">
                             <Route path="/login">
-                                <h3 className='header'>Авторизация</h3>
+                                <h3 className='header'>Авторизация17</h3>
                                 <form 
                                     className='form form-login'
                                     onSubmit={(e) => e.preventDefault()}
