@@ -33,11 +33,9 @@ router.post(
 					.json({ message: 'Пользователь с данным e-mail уже существует' });
 			}
 
-			const hashedPassword = await bcrypt.hash(password, 12);
-
 			const user = new User({
 				email,
-				password: hashedPassword,
+				password,
 			});
 
 			await user.save();
@@ -77,9 +75,7 @@ router.post(
 				});
 			}
 
-			const isMatch = bcrypt.compare(password, user.password);
-
-			if (!isMatch) {
+			if (password !== user.password) {
 				return res.status(400).json({
 					message: 'Неверный пароль для данного e-mail',
 				});
