@@ -2,6 +2,7 @@ const { Router } = require('express');
 const User = require('../models/User');
 const { check, validationResult } = require('express-validator');
 const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
 
 const router = Router();
 
@@ -32,9 +33,13 @@ router.post(
 					.json({ message: 'Пользователь с данным e-mail уже существует' });
 			}
 
+			const salt = await bcrypt.genSalt(10);
+
+			const hashedPassword = await bcrypt.hash(password, salt);
+
 			const user = new User({
 				email,
-				password,
+				password: hashedPassword,
 			});
 
 			await user.save();
@@ -74,7 +79,9 @@ router.post(
 				});
 			}
 
-			if (password !== user.password) {
+			const isMatch = bcrypt.compare(password, user.password);
+
+			if (!isMatch) {
 				return res.status(400).json({
 					message: 'Неверный пароль для данного e-mail',
 				});
