@@ -46,7 +46,7 @@ router.post(
 
 			res.status(201).json({ message: 'Поздравляем! Вы зарегистрировались!' });
 		} catch (e) {
-			comsole.log(e);
+			console.log(e);
 		}
 	}
 );
@@ -94,7 +94,7 @@ router.post(
 			res.json({
 				token,
 				userId: user.id,
-				message: `Поздравляем! Вы вошли!${isMatch} and ${password}`,
+				message: `Поздравляем! Вы вошли!`,
 			});
 		} catch (e) {
 			console.log(e);

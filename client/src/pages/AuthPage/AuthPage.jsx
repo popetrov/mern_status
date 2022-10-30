@@ -31,6 +31,11 @@ export const AuthPage = () => {
                     "Access-Control-Allow-Headers": "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With"
                 }
             })
+            .then(
+                (response => {
+                    window.M.toast({html: response.data.message})
+                })
+            )
             
             history.push('/')
         }catch(e){
@@ -53,10 +58,8 @@ export const AuthPage = () => {
             .then(response => {
                 login(response.data.token, response.data.userId)
                 console.log(response)
+                window.M.toast({html: response.data.message})
             })
-
-            window.M.toast({html: "Вы залогинились"})
-
             
         }catch(e){
             console.log(e)
