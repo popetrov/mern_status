@@ -89,7 +89,7 @@ router.post(
 			res.json({
 				token,
 				userId: user.id,
-				message: `Поздравляем! Вы вошли!${user.password}`,
+				message: `Поздравляем! Вы вошли!${user.password} and ${password}`,
 			});
 		} catch (e) {
 			console.log(e);
