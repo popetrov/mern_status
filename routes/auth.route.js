@@ -30,7 +30,7 @@ router.post(
 			if (isUsed) {
 				return res
 					.status(300)
-					.json({ message: 'Пользователь с данным e-mail уже111 существует' });
+					.json({ message: 'Пользователь с данным e-mail уже существует' });
 			}
 
 			const user = new User({
