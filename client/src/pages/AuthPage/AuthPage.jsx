@@ -33,13 +33,13 @@ export const AuthPage = () => {
             })
             .then(
                 (response => {
-                    window.M.toast({html: response.data.message})
+                    window.M.toast({html: response.data.message, classes: 'rounded green'})
                 })
             )
             
             history.push('/')
         }catch(e){
-            window.M.toast({html: e.response.data.message})
+            window.M.toast({html: e.response.data.message, classes: 'rounded red'})
         }
     }
 
@@ -57,13 +57,12 @@ export const AuthPage = () => {
             })
             .then(response => {
                 login(response.data.token, response.data.userId)
-                console.log(response)
-                window.M.toast({html: response.data.message})
+                window.M.toast({html: response.data.message, classes: 'rounded green'})
             })
             
         }catch(e){
             console.log(e)
-            window.M.toast({html: e.response.data.message})
+            window.M.toast({html: e.response.data.message, classes: 'rounded red', inDuration: 600})
         }
     }
     return (

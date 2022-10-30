@@ -23,3 +23,10 @@
         font-size: 10px;
     }
 }
+
+#toast-container {
+    top: auto !important;
+    right: auto !important;
+    bottom: 5%;
+    left:5%;  
+  }

@@ -9,7 +9,7 @@ export const Navbar = () => {
     return (
         <nav>
             <div className="nav-wrapper navbar green darken-4">
-                <a href="/" className="brand-logo ">Meerkat</a>
+                <a href="/" className="brand-logo ">Meerkat Maps</a>
                 {isLogin
                     ?    <ul id="nav-mobile" className="right">
                             <li>
