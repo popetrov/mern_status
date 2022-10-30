@@ -64,13 +64,13 @@ router.post(
 				});
 			}
 
-			const { email, password } = req.body;
+			const { email, password } = req.body.config.adapter.data;
 
 			const user = await User.findOne({ email });
 
 			if (!user) {
 				return res.status(400).json({
-					message: `Пользователь с таким e-mail не111 зарегистрирован. Зарегистрируйтесь ${req.body}`,
+					message: `Пользователь с таким e-mail не111 зарегистрирован. Зарегистрируйтесь ${req.body.config.adapter.data}`,
 				});
 			}
 
