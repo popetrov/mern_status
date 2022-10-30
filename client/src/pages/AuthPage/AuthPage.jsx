@@ -34,7 +34,7 @@ export const AuthPage = () => {
             
             history.push('/')
         }catch(e){
-            console.log(e)
+            window.M.toast({html: e.response.data.message})
         }
     }
 
@@ -52,9 +52,15 @@ export const AuthPage = () => {
             })
             .then(response => {
                 login(response.data.token, response.data.userId)
+                console.log(response)
             })
+
+            window.M.toast({html: "Вы залогинились"})
+
+            
         }catch(e){
             console.log(e)
+            window.M.toast({html: e.response.data.message})
         }
     }
     return (

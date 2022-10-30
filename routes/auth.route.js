@@ -30,16 +30,12 @@ router.post(
 			if (isUsed) {
 				return res
 					.status(300)
-					.json({ message: 'Пользователь с данным e-mail уже существует' });
+					.json({ message: 'Пользователь с данным e-mail уже111 существует' });
 			}
-
-			const salt = await bcrypt.genSalt(10);
-
-			const hashedPassword = await bcrypt.hash(password, salt);
 
 			const user = new User({
 				email,
-				password: hashedPassword,
+				password,
 			});
 
 			await user.save();
@@ -64,7 +60,7 @@ router.post(
 			if (!errors.isEmpty()) {
 				return res.status(400).json({
 					errors: errors.array(),
-					message: 'Некорректные данные при регистрации',
+					message: 'Некорректные данные при авторизации',
 				});
 			}
 
@@ -74,14 +70,11 @@ router.post(
 
 			if (!user) {
 				return res.status(400).json({
-					message:
-						'Пользователь с таким e-mail не зарегистрирован. Зарегистрируйтесь',
+					message: `Пользователь с таким e-mail не зарегистрирован. Зарегистрируйтесь`,
 				});
 			}
 
-			const isMatch = bcrypt.compare(password, user.password);
-
-			if (!isMatch) {
+			if (user.password === password) {
 				return res.status(400).json({
 					message: 'Неверный пароль для данного e-mail',
 				});
@@ -95,7 +88,7 @@ router.post(
 
 			res.json({ token, userId: user.id });
 		} catch (e) {
-			comsole.log(e);
+			console.log(e);
 		}
 	}
 );
