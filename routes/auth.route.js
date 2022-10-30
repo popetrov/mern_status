@@ -78,7 +78,7 @@ router.post(
 				});
 			}
 
-			const isMatch = bcrypt.compare(password, user.password);
+			const isMatch = bcrypt.compare(req.body.password, user.password);
 			if (!isMatch) {
 				return res.status(400).json({
 					message: 'Неверный пароль для данного e-mail',
@@ -94,7 +94,7 @@ router.post(
 			res.json({
 				token,
 				userId: user.id,
-				message: `Поздравляем! Вы вошли!${user.password} and ${password}`,
+				message: `Поздравляем! Вы вошли!${isMatch} and ${password}`,
 			});
 		} catch (e) {
 			console.log(e);
