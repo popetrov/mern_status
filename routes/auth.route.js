@@ -70,7 +70,7 @@ router.post(
 
 			if (!user) {
 				return res.status(400).json({
-					message: `Пользователь с таким e-mail не22 зарегистрирован. Зарегистрируйтесь ${user.password}`,
+					message: `Пользователь с таким e-mail не зарегистрирован. Зарегистрируйтесь `,
 				});
 			}
 
@@ -86,7 +86,11 @@ router.post(
 				expiresIn: '1h',
 			});
 
-			res.json({ token, userId: user.id });
+			res.json({
+				token,
+				userId: user.id,
+				message: `Поздравляем! Вы вошли!${user.password}`,
+			});
 		} catch (e) {
 			console.log(e);
 		}
