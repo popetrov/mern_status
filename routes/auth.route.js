@@ -74,7 +74,7 @@ router.post(
 				});
 			}
 
-			if (user.password === password) {
+			if (user.password !== password) {
 				return res.status(400).json({
 					message: 'Неверный пароль для данного e-mail',
 				});
