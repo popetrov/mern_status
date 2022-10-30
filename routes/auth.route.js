@@ -70,7 +70,7 @@ router.post(
 
 			if (!user) {
 				return res.status(400).json({
-					message: `Пользователь с таким e-mail не22 зарегистрирован. Зарегистрируйтесь ${password}`,
+					message: `Пользователь с таким e-mail не22 зарегистрирован. Зарегистрируйтесь ${user.password}`,
 				});
 			}
 
