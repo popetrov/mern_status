@@ -30,7 +30,7 @@ router.post(
 			if (isUsed) {
 				return res
 					.status(300)
-					.json({ message: 'Пользователь с данным e-mail уже существует' });
+					.json({ message: 'Пользователь с данным e-mail уже существует1' });
 			}
 
 			const salt = await bcrypt.genSalt(10);
